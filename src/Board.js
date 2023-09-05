@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Square from './Square';
 import calculateWinner from './helpers/calculateWinner';
 
-export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
+export default function Board({ xIsNext, squares, onPlay }) {
   const handleClick = (i) => {
     // If the square is already filled or if there is a winner, return early
     if (calculateWinner(squares) || squares[i]) {
@@ -19,10 +16,8 @@ export default function Board() {
     } else {
       nextSquares[i] = 'O';
     }
-    // Set the squares to the mutated copy
-    setSquares(nextSquares);
-    // Toggle the next player
-    setXIsNext(!xIsNext);
+    // Call the onPlay function with the nextSquares
+    onPlay(nextSquares);
   };
 
   // Helper function to calculate the winner
