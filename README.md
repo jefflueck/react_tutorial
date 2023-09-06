@@ -1,2 +1,2 @@
-# Git tic-tac-toe Tutorial Practice
+# Git Tic-Tac-Toe Tutorial Practice
 ---
