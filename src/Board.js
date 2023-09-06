@@ -28,10 +28,15 @@ export default function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     // If there is a winner, set the status to display the winner
     status = 'Winner: ' + winner;
-    // If there is no winner, set the status to display the next player
-  } else {
+    // If there is no winner, set the status to display the next player.
+  }
+  // If there is no winner and there are still moves to make, set the status to display the next player.
+  if (!winner && squares.includes(null)) {
     // Terinary operator: condition ? value if true : value if false
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  } else {
+    // If there is no winner and there are no more moves to make, set the status to display 'No Winner Today'
+    status = 'No Winner Today';
   }
 
   return (
